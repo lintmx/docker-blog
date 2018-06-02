@@ -1,0 +1,29 @@
+version: "3"
+
+services:
+
+  php:
+    build: php/
+    ports:
+      - "9000:9000"
+    environment:
+      - TOKEN=github_secret
+    volumes:
+      - ./hook/:/home/lintmx/docker-blog/hook/
+      - ./article/:/article/
+    networks:
+      - app-network
+    depends_on:
+      - hexo
+
+  hexo:
+    build: hexo/
+    volumes:
+      - ./article/:/Hexo/source/
+      - ./themes/:/Hexo/themes/
+      - ./blog/:/Hexo/public/
+      - ./hexo/conf.d/_config.yml:/Hexo/_config.yml
+
+networks:
+  app-network:
+    driver: bridge
