@@ -8,10 +8,10 @@ Docker 化 Hexo 博客，并同步 GitHub 文章仓库。
 
 ```
 环境变量（environment）
-- TOKEN=GitHub Webhooks 密钥
+- TOKEN=GitHub Webhooks 密钥
 
 挂载（volumes）
-- ./hook/:项目位置/hook
+- ./hook/:项目位置/hook
 ```
 
 - 修改 `hexo/entrypoint.sh` 文件
@@ -30,7 +30,7 @@ Themes 目录
 /themes
 ```
 
-- Blog 页面输出文件夹
+- Blog 页面输出文件夹
 
 ```
 /blog
@@ -50,7 +50,7 @@ docker-compose up
 
 # Warn
 
-宿主机需要配置 nginx 与 php-fpm 通信以监听 GitHub Webhooks。
+宿主机需要配置 nginx 与 php-fpm 通信以监听 GitHub Webhooks。
 
 nginx 配置示例：
 
