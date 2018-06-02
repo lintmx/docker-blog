@@ -2,6 +2,7 @@
 
 rm -rf source/*
 rm -rf source/.git
+rm -rf source/.gitkeep
 rm -rf themes/*
 
 git clone https://github.com/lintmx/blog-archive source/
