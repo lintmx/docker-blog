@@ -2,4 +2,5 @@
 /themes/*
 /blog/*
 /article/*
+/acme.sh/*
 !*.gitkeep
