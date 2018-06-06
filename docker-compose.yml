@@ -40,6 +40,10 @@ services:
 
   hexo:
     build: hexo/
+    environment:
+      - ARTICLE_REP=${ARTICLE_REP}
+      - THEME_REP=${THEME_REP}
+      - THEME_PKG=${THEME_PKG}
     volumes:
       - ./article/:/Hexo/source/
       - ./themes/:/Hexo/themes/

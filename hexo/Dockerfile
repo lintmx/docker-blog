@@ -1,19 +1,19 @@
-FROM node:alpine
+FROM alpine:latest
 
-RUN \
-    apk --update --no-progress add git openssh
+RUN apk --update --no-progress add yarn git openssh
 
 WORKDIR /Hexo
 
-RUN \
-    npm install hexo-cli -g \
+RUN yarn global add hexo-cli \
     && hexo init . \
-    && npm install
+    && yarn install
         
 VOLUME ["/Hexo/public", "/Hexo/source", "/Hexo/themes"]
 
-COPY entrypoint.sh /Hexo/entrypoint.sh
+COPY entrypoint.sh /entrypoint.sh
 
-ENTRYPOINT ["/Hexo/entrypoint.sh"]
+RUN chmod +x /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]
 
 CMD ["hexo", "generate", "--watch"]
