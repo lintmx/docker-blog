@@ -4,6 +4,7 @@ services:
 
   nginx:
     build: nginx/
+    container_name: blog_nginx
     ports:
       - "80:80"
       - "443:443"
@@ -20,7 +21,8 @@ services:
       - ./nginx/snippets/:/etc/nginx/snippets/
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
       - ./nginx/conf.d/:/etc/nginx/conf.d/
-    networks: 
+      - ./nginx/dhparam/:/root/dhparam/
+    networks:
       - app-network
     depends_on:
       - php
@@ -28,6 +30,7 @@ services:
 
   php:
     build: php/
+    container_name: blog_hook
     environment:
       - TOKEN=${WEBHOOK_TOKEN}
     volumes:
@@ -40,6 +43,7 @@ services:
 
   hexo:
     build: hexo/
+    container_name: blog_hexo
     environment:
       - ARTICLE_REP=${ARTICLE_REP}
       - THEME_REP=${THEME_REP}

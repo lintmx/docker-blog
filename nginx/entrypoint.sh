@@ -15,9 +15,9 @@ if [ ! -f "$ACME_DIR/acme.sh" ]; then
     
 fi
 
-if [ ! -f "/root/certs/dhparam.pem" ]; then
-    mkdir -p /root/certs
-    openssl dhparam -out /root/certs/dhparam.pem 2048
+if [ ! -f "/root/dhparam/dhparam.pem" ]; then
+    mkdir -p /root/dhparam
+    openssl dhparam -out /root/dhparam/dhparam.pem $DHPARAM
 fi
 
 chmod +x $ACME_DIR/acme.sh
