@@ -4,6 +4,7 @@ services:
 
   nginx:
     build: nginx/
+    image: blog_nginx
     container_name: blog_nginx
     ports:
       - "80:80"
@@ -14,6 +15,8 @@ services:
       - DNS_PROVIDE=${DNS_PROVIDE}
       - ${DNS_KEY}=${DNS_KEY_VAL}
       - ${DNS_EMAIL}=${DNS_EMAIL_VAL}
+      - DHPARAM=${DHPARAM}
+      - ECC_CERT=${ECC_CERT}
     volumes:
       - ./acme.sh/:/root/.acme.sh/
       - ./blog/:/blog/
@@ -30,6 +33,7 @@ services:
 
   php:
     build: php/
+    image: blog_php
     container_name: blog_hook
     environment:
       - TOKEN=${WEBHOOK_TOKEN}
@@ -43,6 +47,7 @@ services:
 
   hexo:
     build: hexo/
+    image: blog_hexo
     container_name: blog_hexo
     environment:
       - ARTICLE_REP=${ARTICLE_REP}
