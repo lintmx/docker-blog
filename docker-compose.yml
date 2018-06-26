@@ -53,6 +53,7 @@ services:
       - ARTICLE_REP=${ARTICLE_REP}
       - THEME_REP=${THEME_REP}
       - THEME_PKG=${THEME_PKG}
+      - THEME_NAME=${THEME_NAME}
     volumes:
       - ./article/:/Hexo/source/
       - ./themes/:/Hexo/themes/
