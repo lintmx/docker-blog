@@ -10,11 +10,9 @@ services:
       - "80:80"
       - "443:443"
     environment:
-      - BLOG_DOMAIN=${BLOG_DOMAIN}
-      - HOOK_DOMAIN=${HOOK_DOMAIN}
+      - DOMAIN_LIST=${DOMAIN_LIST}
       - DNS_PROVIDE=${DNS_PROVIDE}
-      - ${DNS_KEY}=${DNS_KEY_VAL}
-      - ${DNS_EMAIL}=${DNS_EMAIL_VAL}
+      - DNS_API=${DNS_API}
       - DHPARAM=${DHPARAM}
       - ECC_CERT=${ECC_CERT}
     volumes:
